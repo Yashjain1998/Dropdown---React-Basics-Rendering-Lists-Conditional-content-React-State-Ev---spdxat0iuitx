@@ -139,10 +139,52 @@ const states = [{
 
 
 function App() 
-{
+{	
 	// Do not alter/remove main div
+	
+	const[state,setstate]=useState(states[0])
+	const[city,setcity]=useState(state.city[0])
+	const[landmark ,setlandmark]=useState(city.landmarks[0])
+	
 	return (
 	<div id="main">
+		<select id="state" value={state.name} onChange={(el)=>{
+			const state=states.find(({name})=>name===el.target.value)
+			setstate(state)
+			setcity(state.city[0])
+			setlandmark(state.city[0].landmarks[0])
+		}}>
+			{states.map(({name})=><option key={name}>{name}</option>)}
+		</select>
+		<select id="city" value={city.name} onChange={(el)=>{
+			const city=state.city.find(({name})=>name===el.target.value)
+			setlandmark(city.landmarks[0])
+			setcity(city)
+		}}>
+			{
+				state.city.map(({name})=><option key={name}>{name}</option>)
+			}
+		</select>
+		<select id="landmark" value={landmark.name} onChange={(el)=>{
+			const landmark=city.landmarks.find(({name})=>name===el.target.value)
+			setlandmark(landmark)
+		}}>
+		{
+			city.landmarks.map(({name})=><option key={name}>{name}</option>)
+		}
+		</select>
+		<div id="#state-name state-description state-title">
+		<h2>{state.name}</h2>
+			<p>{state.description}</p>
+		</div>
+		<div id="city-name city-description city-title">
+			<h2>{city.name}</h2>
+			<p>{city.description}</p>
+		</div>
+		<div id="landmark-name landmark-description landmark-title">
+			<h2>{landmark.name}</h2>
+			<p>{landmark.description}</p>
+		</div>
 		
 	</div>
 	);
