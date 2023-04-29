@@ -173,17 +173,17 @@ function App()
 			city.landmarks.map(({name})=><option key={name}>{name}</option>)
 		}
 		</select>
-		<div id="#state-name state-description state-title">
-		<h2>{state.name}</h2>
-			<p>{state.description}</p>
+		<div id="#state-name">
+			<h2 id="state-title">{state.name}</h2>
+			<p id="state-description">{state.description}</p>
 		</div>
-		<div id="city-name city-description city-title">
-			<h2>{city.name}</h2>
-			<p>{city.description}</p>
+		<div id="city-name">
+			<h2 id="city-title">{city.name}</h2>
+			<p id="city-description">{city.description}</p>
 		</div>
-		<div id="landmark-name landmark-description landmark-title">
-			<h2>{landmark.name}</h2>
-			<p>{landmark.description}</p>
+		<div id="landmark-name">
+			<h2 id="landmark-title">{landmark.name}</h2>
+			<p id="landmark-description">{landmark.description}</p>
 		</div>
 		
 	</div>
